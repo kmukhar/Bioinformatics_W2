@@ -88,11 +88,11 @@ public class SpectrumGeneratorTest {
 		ArrayList<Integer> expected = new ArrayList<>();
 		String[] vals = in.readLine().split(" ");
 		in.close();
-		for (String s : vals) 
+		for (String s : vals)
 			expected.add(Integer.parseInt(s));
 		Collections.sort(expected);
 
-		ArrayList<Integer> actual = sg.generateSpectrum(text);		
+		ArrayList<Integer> actual = sg.generateSpectrum(text);
 		System.out.println(expected);
 		System.out.println(actual);
 		assertEquals(expected, actual);
@@ -107,11 +107,11 @@ public class SpectrumGeneratorTest {
 		ArrayList<Integer> expected = new ArrayList<>();
 		String[] vals = in.readLine().split(" ");
 		in.close();
-		for (String s : vals) 
+		for (String s : vals)
 			expected.add(Integer.parseInt(s));
 		Collections.sort(expected);
 
-		ArrayList<Integer> actual = sg.generateSpectrum(text);		
+		ArrayList<Integer> actual = sg.generateSpectrum(text);
 		System.out.println(expected);
 		System.out.println(actual);
 		assertEquals(expected, actual);
@@ -121,7 +121,13 @@ public class SpectrumGeneratorTest {
 	public void testGenerateSpectrum07() {
 		In in = new In("dataset_20_3.txt");
 		String text = in.readLine();
-		ArrayList<Integer> actual = sg.generateSpectrum(text);		
-		System.out.println(actual.toString().replace(",",""));
+		ArrayList<Integer> actual = sg.generateSpectrum(text); // VKLFPWFNQY
+		System.out.println(actual.toString().replace(",", ""));
+	}
+
+	@Test
+	public void testGenerateSpectrum08() {
+		ArrayList<Integer> actual = sg.generateSpectrum("VKLFPWFNQY");
+		System.out.println("TyrocidineB1: " + actual.toString().replace(",", ""));
 	}
 }

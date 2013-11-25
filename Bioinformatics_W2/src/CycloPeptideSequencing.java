@@ -28,14 +28,16 @@ public class CycloPeptideSequencing {
 			queue = expandQueue(queue);
 			ArrayList<String> toRemove = new ArrayList<>();
 			for (String s : queue) {
-				ArrayList<Integer> spectrum = sg.generateSpectrum(s);
+				ArrayList<Integer> Cyclospectrum = sg.generateSpectrum(s, true);
+				ArrayList<Integer> spectrum = sg.generateSpectrum(s, false);
 
-				if (input.equals(spectrum)) {
+				if (input.equals(Cyclospectrum)) {
 					result.add(s);
 					toRemove.add(s);
 				} else {
 					for (Integer i : input)
-						spectrum.remove(i);
+						while (spectrum.size() > 0 && spectrum.remove(i))
+							;
 
 					if (spectrum.size() > 0)
 						toRemove.add(s);
@@ -45,6 +47,7 @@ public class CycloPeptideSequencing {
 				queue.remove(s);
 		}
 
+		System.out.println(result);
 		result = convertToWeights(result);
 		return result;
 	}
@@ -72,7 +75,6 @@ public class CycloPeptideSequencing {
 		for (String s : queue)
 			for (Peptide p : peptides) {
 				String es = s + p.value;
-				System.out.println(es);
 				result.add(es);
 			}
 		return result;

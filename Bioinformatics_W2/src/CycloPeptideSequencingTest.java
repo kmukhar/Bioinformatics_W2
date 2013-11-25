@@ -58,4 +58,42 @@ public class CycloPeptideSequencingTest {
 		System.out.println(actual);
 		assertEquals(expected, actual);
 	}
+
+	@Test
+	public void testSequence03() {
+		In in = new In("dataset_22_4.txt");// leaderboard_spectrum_1.txt
+		String text = in.readLine();
+		ArrayList<Integer> input = new ArrayList<>();
+		for (String s : text.split(" "))
+			input.add(Integer.parseInt(s));
+		in.close();
+
+		ArrayList<String> actual = c.sequence(input);
+		System.out.println(actual.toString().replace(",", ""));
+	}
+
+	@Test
+	public void testSequence04() {
+		In in = new In("leaderboard_spectrum_1.txt");
+		String text = in.readLine();
+		ArrayList<Integer> input = new ArrayList<>();
+		for (String s : text.split(" "))
+			input.add(Integer.parseInt(s));
+		in.close();
+
+		ArrayList<String> actual = c.sequence(input);
+		System.out.println(actual.toString().replace(",", ""));
+	}
+	@Test
+	public void testSequence05() {
+		In in = new In("Tyrocidine_B1_theoretical_spectrum_1.txt");
+		String text = in.readLine();
+		ArrayList<Integer> input = new ArrayList<>();
+		for (String s : text.split(" "))
+			input.add(Integer.parseInt(s));
+		in.close();
+
+		ArrayList<String> actual = c.sequence(input);
+		System.out.println(actual.toString().replace(",", ""));
+	}
 }

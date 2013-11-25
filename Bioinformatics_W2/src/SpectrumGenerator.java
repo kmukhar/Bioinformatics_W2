@@ -10,28 +10,35 @@ public class SpectrumGenerator {
 	}
 
 	public ArrayList<Integer> generateSpectrum(String input) {
+		return generateSpectrum(input, true);
+	}
+
+	public ArrayList<Integer> generateSpectrum(String input, boolean cyclic) {
 		Hashtable<String, Integer> processed = new Hashtable<>();
 		ArrayList<Integer> result = new ArrayList<>();
 		result.add(0);
 		int length = input.length();
 
-		String text = input + input;
+		String text = input;
+		if (cyclic)
+			text += input;
+
 		for (int i = 1; i < length; i++) {
 			int start = 0;
-			while (start < length) {
+			while (start < length && start+i < text.length()) {
 				StringBuilder subText = new StringBuilder(text.substring(start,
 						start + i));
-//				if (processed.get(subText.toString()) == null
-//						&& processed.get(subText.reverse().toString()) == null) {
-					int mass = 0;
-					char[] chars = new char[subText.length()];
-					subText.getChars(0, subText.length(), chars, 0);
-					for (char s : chars) {
-						mass += massMap.get("" + s).intValue();
-					}
-					processed.put(subText.reverse().toString(), mass);
-					result.add(mass);
-//				}
+				// if (processed.get(subText.toString()) == null
+				// && processed.get(subText.reverse().toString()) == null) {
+				int mass = 0;
+				char[] chars = new char[subText.length()];
+				subText.getChars(0, subText.length(), chars, 0);
+				for (char s : chars) {
+					mass += massMap.get("" + s).intValue();
+				}
+				processed.put(subText.reverse().toString(), mass);
+				result.add(mass);
+				// }
 				++start;
 			}
 		}
