@@ -54,10 +54,11 @@ public class ConvolutionerTest {
 		Collections.sort(exp);
 		ArrayList<Integer> actual = c.convolute(input);
 		Collections.sort(actual);
-		System.out.println(exp.toString());
-		System.out.println(actual);
+		printLongString(exp);
+		printLongString(actual);
 		assertEquals(exp, actual);
 	}
+
 	@Test
 	public void testConvolute03() {
 		In in = new In("dataset_26_4.txt");
@@ -69,6 +70,17 @@ public class ConvolutionerTest {
 		in.close();
 		ArrayList<Integer> actual = c.convolute(input);
 		Collections.sort(actual);
-		System.out.println(actual.toString().replace(",", ""));
+		printLongString(actual);
+	}
+
+	private void printLongString(ArrayList<Integer> actual) {
+		StringBuilder sb = new StringBuilder(actual.toString().replace(",", ""));
+		int start = 0;
+		while (start < sb.length()) {
+			int end = start + 80;
+			end = end <= sb.length() ? end : sb.length();
+			System.out.println(sb.substring(start, end));
+			start += 80;
+		}
 	}
 }
