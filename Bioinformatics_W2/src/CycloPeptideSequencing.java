@@ -52,6 +52,27 @@ public class CycloPeptideSequencing {
 		return result;
 	}
 
+	public ArrayList<String> leaderboardSequence(ArrayList<Integer> spectrum,
+			int maxCandidates) {
+		ArrayList<String> leaders = new ArrayList<>();
+		ArrayList<String> result = new ArrayList<>();
+		String leader = "";
+		leaders.add(leader);
+		// while Leaderboard is non-empty
+		while (!leaders.isEmpty()) {
+//        Leaderboard <- Expand(Leaderboard)
+//        for each Peptide in Leaderboard
+//            if Mass(Peptide) = ParentMass(Spectrum)
+//                if Score(Peptide, Spectrum) > Score(LeaderPeptide, Spectrum)
+//                    LeaderPeptide <- Peptide
+//            else if Mass(Peptide) > ParentMass(Spectrum)
+//                remove Peptide from Leaderboard
+//        Leaderboard <- Cut(Leaderboard, Spectrum, N)
+//    output LeaderPeptide
+		}
+		return result;
+	}
+    
 	private ArrayList<String> convertToWeights(ArrayList<String> result) {
 		ArrayList<String> converted = new ArrayList<>();
 		for (String s : result) {
