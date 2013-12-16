@@ -13,7 +13,7 @@ public class CycloPeptideSequencingTest {
 	public static void setUpBeforeClass() throws Exception {
 	}
 
-	@Test
+//	@Test
 	public void testSequence01() {
 		In in = new In("cycloseq_sample.txt");
 		in.readLine();
@@ -36,7 +36,7 @@ public class CycloPeptideSequencingTest {
 		assertEquals(expected, actual);
 	}
 
-	@Test
+//	@Test
 	public void testSequence02() {
 		In in = new In("cycloseq_data.txt");
 		in.readLine();
@@ -59,7 +59,7 @@ public class CycloPeptideSequencingTest {
 		assertEquals(expected, actual);
 	}
 
-	@Test
+//	@Test
 	public void testSequence03() {
 		In in = new In("dataset_22_4.txt");// leaderboard_spectrum_1.txt
 		String text = in.readLine();
@@ -72,7 +72,7 @@ public class CycloPeptideSequencingTest {
 		System.out.println(actual.toString().replace(",", ""));
 	}
 
-	@Test
+//	@Test
 	public void testSequence04() {
 		In in = new In("leaderboard_spectrum_1.txt");
 		String text = in.readLine();
@@ -85,7 +85,7 @@ public class CycloPeptideSequencingTest {
 		System.out.println(actual.toString().replace(",", ""));
 	}
 
-	@Test
+//	@Test
 	public void testSequence05() {
 		In in = new In("Tyrocidine_B1_theoretical_spectrum_1.txt");
 		String text = in.readLine();
@@ -98,7 +98,7 @@ public class CycloPeptideSequencingTest {
 		System.out.println(actual.toString().replace(",", ""));
 	}
 
-	@Test
+//	@Test
 	public void testLeader01() {
 		In in = new In("leaderboard_sample.txt");
 		in.readLine();
@@ -125,7 +125,7 @@ public class CycloPeptideSequencingTest {
 		assertEquals(expected, actual);
 	}
 
-	@Test
+//	@Test
 	public void testLeader02() {
 		In in = new In("leaderboard_data.txt");
 		in.readLine();
@@ -152,7 +152,7 @@ public class CycloPeptideSequencingTest {
 		assertEquals(expected, actual);
 	}
 
-	@Test
+//	@Test
 	public void testLeader03() {
 		In in = new In("dataset_24_4.txt");
 		String s = in.readLine();
@@ -170,9 +170,27 @@ public class CycloPeptideSequencingTest {
 		System.out.println(actual);
 	}
 
-	@Test
+//	@Test
 	public void testLeader04() {
 		In in = new In("dataset_24_6.txt");
+		String s = in.readLine();
+		int maxCandidates = Integer.parseInt(s);
+
+		s = in.readLine();
+		ArrayList<Integer> spectrum = new ArrayList<>();
+		for (String s2 : s.split(" "))
+			spectrum.add(Integer.parseInt(s2));
+
+		in.close();
+
+		ArrayList<String> actual = c.leaderboardSequence(spectrum,
+				maxCandidates);
+		System.out.println(actual.toString().replace(",", ""));
+	}
+
+	@Test
+	public void testLeader05() {
+		In in = new In("dataset_25_1.txt");
 		String s = in.readLine();
 		int maxCandidates = Integer.parseInt(s);
 
